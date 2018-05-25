@@ -128,9 +128,10 @@
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogo-nT-eE9">
                                             <rect key="frame" x="147" y="709" width="81" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                             <state key="normal" title="Regresar"/>
                                             <connections>
-                                                <segue destination="obH-tE-BEK" kind="unwind" unwindAction="prepareForUnwindWithSegue:" id="JUe-WA-1yX"/>
+                                                <segue destination="obH-tE-BEK" kind="unwind" unwindAction="prepareForUnwindWithSegue:" id="qKj-g6-4a2"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -184,6 +185,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFl-gL-TvG">
                                 <rect key="frame" x="142" y="709" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
                                 <state key="normal" title="Regresar"/>
                                 <connections>
                                     <action selector="backButton:" destination="jfw-12-f9V" eventType="touchUpInside" id="pqS-o0-9jT"/>
