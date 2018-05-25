@@ -26,11 +26,21 @@ class test001Tests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
+    func testPerformanceMapViewController() {
         self.measure {
-            // Put the code you want to measure the time of here.
+            MapViewController.load()
         }
     }
     
+    func testPerformanceDetailViewController(){
+        self.measure {
+            DetailViewController.load()
+        }
+    }
+    
+    func testPerformanceViewController(){
+        self.measure {
+            ViewController.load()
+        }
+    }
 }
