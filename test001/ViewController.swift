@@ -41,6 +41,10 @@ class ViewController: UIViewController {
             animationPerformOnce = true;
         }
     }
+    
+    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
+        
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
