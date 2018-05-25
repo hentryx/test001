@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB16B6B320B767FF00B5B7C7 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB16B6B220B767FF00B5B7C7 /* DetailViewController.swift */; };
 		CB2B2A972063F90800E3E513 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B2A962063F90800E3E513 /* AppDelegate.swift */; };
 		CB2B2A992063F90800E3E513 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B2A982063F90800E3E513 /* ViewController.swift */; };
 		CB2B2A9C2063F90800E3E513 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B2A9A2063F90800E3E513 /* Main.storyboard */; };
 		CB2B2A9E2063F90800E3E513 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB2B2A9D2063F90800E3E513 /* Assets.xcassets */; };
 		CB2B2AA12063F90800E3E513 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB2B2A9F2063F90800E3E513 /* LaunchScreen.storyboard */; };
 		CB2B2AAC2063F90800E3E513 /* test001Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2B2AAB2063F90800E3E513 /* test001Tests.swift */; };
+		CB2B2AB82063FCD600E3E513 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB2B2AB72063FCD600E3E513 /* LocalAuthentication.framework */; };
+		CB90212420B734C30087E019 /* schoolbus.png in Resources */ = {isa = PBXBuildFile; fileRef = CB90212320B734C30087E019 /* schoolbus.png */; };
+		CB90212620B73F5C0087E019 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB90212520B73F5C0087E019 /* CustomCollectionViewCell.swift */; };
+		CB934C1D20B5D3A400DDFF91 /* LOGO.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB934C1C20B5D3A300DDFF91 /* LOGO.jpg */; };
+		CB934C2020B644F200DDFF91 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB934C1F20B644F200DDFF91 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB16B6B220B767FF00B5B7C7 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		CB2B2A932063F90700E3E513 /* test001.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = test001.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2B2A962063F90800E3E513 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB2B2A982063F90800E3E513 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +43,11 @@
 		CB2B2AA72063F90800E3E513 /* test001Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = test001Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB2B2AAB2063F90800E3E513 /* test001Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test001Tests.swift; sourceTree = "<group>"; };
 		CB2B2AAD2063F90800E3E513 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB2B2AB72063FCD600E3E513 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		CB90212320B734C30087E019 /* schoolbus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = schoolbus.png; sourceTree = "<group>"; };
+		CB90212520B73F5C0087E019 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		CB934C1C20B5D3A300DDFF91 /* LOGO.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LOGO.jpg; sourceTree = "<group>"; };
+		CB934C1F20B644F200DDFF91 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB2B2AB82063FCD600E3E513 /* LocalAuthentication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +75,7 @@
 				CB2B2A952063F90700E3E513 /* test001 */,
 				CB2B2AAA2063F90800E3E513 /* test001Tests */,
 				CB2B2A942063F90700E3E513 /* Products */,
+				CB2B2AB62063FCD600E3E513 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,9 +93,13 @@
 			children = (
 				CB2B2A962063F90800E3E513 /* AppDelegate.swift */,
 				CB2B2A982063F90800E3E513 /* ViewController.swift */,
+				CB934C1F20B644F200DDFF91 /* MapViewController.swift */,
+				CB90212520B73F5C0087E019 /* CustomCollectionViewCell.swift */,
+				CB16B6B220B767FF00B5B7C7 /* DetailViewController.swift */,
 				CB2B2A9A2063F90800E3E513 /* Main.storyboard */,
 				CB2B2A9D2063F90800E3E513 /* Assets.xcassets */,
 				CB2B2A9F2063F90800E3E513 /* LaunchScreen.storyboard */,
+				CB934C1E20B5D3C300DDFF91 /* UI */,
 				CB2B2AA22063F90800E3E513 /* Info.plist */,
 			);
 			path = test001;
@@ -94,6 +112,23 @@
 				CB2B2AAD2063F90800E3E513 /* Info.plist */,
 			);
 			path = test001Tests;
+			sourceTree = "<group>";
+		};
+		CB2B2AB62063FCD600E3E513 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CB2B2AB72063FCD600E3E513 /* LocalAuthentication.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CB934C1E20B5D3C300DDFF91 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CB90212320B734C30087E019 /* schoolbus.png */,
+				CB934C1C20B5D3A300DDFF91 /* LOGO.jpg */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,7 +176,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Henry Bautista";
 				TargetAttributes = {
 					CB2B2A922063F90700E3E513 = {
@@ -179,6 +214,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB90212420B734C30087E019 /* schoolbus.png in Resources */,
+				CB934C1D20B5D3A400DDFF91 /* LOGO.jpg in Resources */,
 				CB2B2AA12063F90800E3E513 /* LaunchScreen.storyboard in Resources */,
 				CB2B2A9E2063F90800E3E513 /* Assets.xcassets in Resources */,
 				CB2B2A9C2063F90800E3E513 /* Main.storyboard in Resources */,
@@ -200,7 +237,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB2B2A992063F90800E3E513 /* ViewController.swift in Sources */,
+				CB934C2020B644F200DDFF91 /* MapViewController.swift in Sources */,
+				CB16B6B320B767FF00B5B7C7 /* DetailViewController.swift in Sources */,
 				CB2B2A972063F90800E3E513 /* AppDelegate.swift in Sources */,
+				CB90212620B73F5C0087E019 /* CustomCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +296,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -263,6 +304,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -313,6 +355,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -320,6 +363,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
