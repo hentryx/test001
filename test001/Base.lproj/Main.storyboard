@@ -182,13 +182,27 @@
                                 </constraints>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uFl-gL-TvG">
-                                <rect key="frame" x="142" y="85" width="91" height="30"/>
+                                <rect key="frame" x="142" y="709" width="91" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Regresar"/>
                                 <connections>
                                     <action selector="backButton:" destination="jfw-12-f9V" eventType="touchUpInside" id="pqS-o0-9jT"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Toz-dp-Cxr">
+                                <rect key="frame" x="42" y="116" width="176" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.2108357152774557" green="0.25058878275203433" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is8-R6-8fT">
+                                <rect key="frame" x="42" y="146" width="290" height="76"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.22000980830300354" green="0.29424088269038684" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -200,7 +214,9 @@
                         <viewLayoutGuide key="safeArea" id="YN4-6J-k0a"/>
                     </view>
                     <connections>
+                        <outlet property="descLabel" destination="is8-R6-8fT" id="AZY-cH-eHR"/>
                         <outlet property="mapView" destination="W9u-j7-PPW" id="VLa-w6-vH9"/>
+                        <outlet property="nameLabel" destination="Toz-dp-Cxr" id="WM8-Ua-3hi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8c-YB-g0B" userLabel="First Responder" sceneMemberID="firstResponder"/>
