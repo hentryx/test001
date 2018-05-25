@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 
+// Estructuras para parsear los JSON
 struct Stops: Decodable {
     let response: Bool?
     let stops: [Stop]?
@@ -19,18 +20,7 @@ struct Stop: Decodable {
     let lng: Double?
 }
 
-
-
 class DetailViewController: UIViewController , MKMapViewDelegate {
-    
-    @IBAction func backButton(_ sender: Any) {
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let routesView = storyBoard.instantiateViewController(withIdentifier: "theSecondView") as! MapViewController
-        
-        self.present(routesView, animated: true, completion: nil)
-    }
-        
-
     
     var id = -1
     var stopsUrl = ""
@@ -39,6 +29,7 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
     var descrip = ""
     var stops = [Stop]()
     
+    // Esructura adicional para el frmato mapkit, auxilia la inclucion de los pines
     class Station: NSObject, MKAnnotation {
         var title: String?
         var subtitle: String?
@@ -54,11 +45,17 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
             self.longitude = longitude
         }
     }
+    
+    // accion para el boton volver. recuperacion de memoria
+    @IBAction func backButton(_ sender: Any) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let routesView = storyBoard.instantiateViewController(withIdentifier: "theSecondView") as! MapViewController
+        self.present(routesView, animated: true, completion: nil)
+    }
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descLabel: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +63,7 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
         // Do any additional setup after loading the view.
         nameLabel.text = self.name
         descLabel.text = self.descrip
+        // aqui inicia la obtencion de la data
         guard let url = URL(string: self.stopsUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -77,16 +75,13 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
                  print(dataAsString as Any)
                 do {
                     let points = try JSONDecoder().decode(Stops.self, from: data)
-                    print(points.stops! as Any)
+                    // print(points.stops! as Any)
                     self.stops = points.stops!
-                    
-                    
-                    
                 } catch let jsonErr {
                     print("Error Serializando Json", jsonErr)
                 }
                 DispatchQueue.main.async {
-                    print(self.stops.count)
+                    // se asegura de haber recuperado los datos para luego si dibujar
                     self.zoomToRegion(lat: self.stops[Int(round(Double(self.stops.count/2)))].lat!,lng:self.stops[0].lng!
                     )
                     var annotations:Array = [Station]()
@@ -95,17 +90,16 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
                         annotation.title = String(format:"%f",item.lat!) + ", " + String(format:"%f",item.lng!)
                         annotations.append(annotation)
                     }
+                    // añade los pines
                     self.mapView.addAnnotations(annotations)
-                    
                     var points: [CLLocationCoordinate2D] = [CLLocationCoordinate2D]()
-                    
                     for annotation in annotations {
                         points.append(annotation.coordinate)
                     }
                     let polyline = MKPolyline(coordinates: points, count: points.count)
+                    // añade la ruta azul
                     self.mapView.add(polyline)
                     self.mapView.showsCompass = true
-               //     self.mapView.reloadInputViews()
                 }
             }
             }.resume()
@@ -116,19 +110,16 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // funcion para acercar medianamente la region a graficar
     func zoomToRegion(lat:Double,lng:Double) {
-        
         let location = CLLocationCoordinate2D(latitude: lat, longitude: lng)
-        
         let region = MKCoordinateRegionMakeWithDistance(location, 800.0, 2500.0)
-        
         mapView.setRegion(region, animated: true)
     }
     
-
+    // funcion para renderizar la ruta azul
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let polylineRenderer = MKPolylineRenderer(overlay: overlay)
-        
         if overlay is MKPolyline {
             polylineRenderer.strokeColor = UIColor.blue
             polylineRenderer.lineWidth = 5
@@ -136,15 +127,4 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
         }
         return polylineRenderer
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

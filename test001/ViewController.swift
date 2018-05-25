@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // esto realiza la animacion de derecha a izquierda
         mainLogoXConstraint.constant -= view.bounds.width
         loginButtonXConstraint.constant -= view.bounds.width
         
@@ -26,14 +27,14 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        // esto realiza la compensacion de posicion para la animacion de derecha a izquierda
         if(!animationPerformOnce){
-            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut, animations: {
                 self.mainLogoXConstraint.constant += self.view.bounds.width
                 self.view.layoutIfNeeded()
             }, completion: nil)
             
-            UIView.animate(withDuration: 0.5, delay: 0.3, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.7, delay: 0.3, options: .curveEaseOut, animations: {
                 self.loginButtonXConstraint.constant += self.view.bounds.width
                 self.view.layoutIfNeeded()
             }, completion: nil)
@@ -50,23 +51,16 @@ class ViewController: UIViewController {
         beginFaceID()
     }
     
-    @IBAction func prepareForUnwind(segue: UIStoryboardSegue){
-        
-    }
-    
+    // esta funcion realiza la validacion de reconocimiento facial y/o la de biometria por touch
     func beginFaceID() {
-        
         let laContext = LAContext()
         var error: NSError?
         let biometricsPolicy = LAPolicy.deviceOwnerAuthenticationWithBiometrics
-        
         if (laContext.canEvaluatePolicy(biometricsPolicy, error: &error)) {
-            
             if let laError = error {
                 print("laError - \(laError)")
                 return
             }
-            
             var localizedReason = "Unlock device"
             if #available(iOS 11.0, *) {
                 switch laContext.biometryType {
@@ -75,14 +69,11 @@ class ViewController: UIViewController {
                 case .none: print("No Biometric support")
                 }
             } else {
-                // Fallback on earlier versions
+                // Fallback on earlier versions deshabilidtado ya que este programa no funcionara en iphones menores al 6
             }
-            
-            
             laContext.evaluatePolicy(biometricsPolicy, localizedReason: localizedReason, reply: { (isSuccess, error) in
-                
                 DispatchQueue.main.async(execute: {
-                    
+                    // se asegura que se ejecute en el tiempo correcto
                     if let laError = error {
                         print("laError - \(laError)")
                     } else {
@@ -93,20 +84,18 @@ class ViewController: UIViewController {
                             
                             self.present(alertController, animated: true, completion: nil)
                             print("Exitoso")
-                            
-                        }                     }
-                    
+                        }
+                    }
                 })
             })
         }
-        
     }
+    
+    //controla el evento de dar continuar despues de un reconocimiento exitoso
     func theAlertHandler(alert: UIAlertAction!){
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "theSecondView")
         self.present(newViewController, animated: true, completion: nil)
     }
-
-
 }
 

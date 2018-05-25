@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Estructuras para parsear los json
 struct SchoolBuses: Decodable {
     let response: Bool?
     let school_buses: [SchoolBus]?
@@ -21,7 +22,7 @@ struct SchoolBus: Decodable {
     let stops_url: String?
 }
 
-
+// Extension para recuperar correctamente las imagenes de una url especifica
 extension UIImageView {
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         contentMode = mode
@@ -46,16 +47,14 @@ extension UIImageView {
 class MapViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     var buses = [SchoolBus]()
-    
-    
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     override func viewDidLoad() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        
         super.viewDidLoad()
-        
+        // Aqui inicia la recuperacion de la data
         guard let url = URL(string: "https://api.myjson.com/bins/10yg1t") else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -63,14 +62,10 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
             }
             else{
                 guard let data = data else { return }
-                // let dataAsString = String(data:data, encoding: .utf8)
-                // print(dataAsString as Any)
                 do {
                     let schoolBuses = try JSONDecoder().decode(SchoolBuses.self, from: data)
-                //    print(schoolBuses.response as Any)
-                //    print(schoolBuses.school_buses as Any)
+                    //print(schoolBuses.school_buses! as Any)
                     self.buses = schoolBuses.school_buses!;
-                //    print(self.buses[0].name as Any)
                 } catch let jsonErr {
                     print("Error Serializando Json", jsonErr)
                 }
@@ -89,23 +84,22 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
         // Dispose of any resources that can be recreated.
     }
     
+    // override para saber cuantos elementos hay para dibujar en el collectionview
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  self.buses.count
         
     }
     
+    // override para redibujar las celdas del collectionview
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "customCell", for: indexPath) as! CustomCollectionViewCell
-        
         cell.labelCell.text = self.buses[indexPath.row].name!
         cell.ImageCell.contentMode = .scaleAspectFill
         cell.ImageCell.downloadedFrom(link: self.buses[indexPath.row].img_url!)
-        
         return cell
-        
     }
-
+    
+    // override que controla el evento cuando se seleciona un cell
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let detailView = storyBoard.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
@@ -116,7 +110,4 @@ class MapViewController: UIViewController, UICollectionViewDelegate, UICollectio
         detailView.stopsUrl = self.buses[indexPath.row].stops_url!
         self.present(detailView, animated: true, completion: nil)
     }
-    
-
-
 }
