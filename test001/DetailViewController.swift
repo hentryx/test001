@@ -56,13 +56,16 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
     }
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
         // Do any additional setup after loading the view.
-        
+        nameLabel.text = self.name
+        descLabel.text = self.descrip
         guard let url = URL(string: self.stopsUrl) else { return }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if error != nil {
@@ -84,7 +87,7 @@ class DetailViewController: UIViewController , MKMapViewDelegate {
                 }
                 DispatchQueue.main.async {
                     print(self.stops.count)
-                    self.zoomToRegion(lat: self.stops[0].lat!,lng:self.stops[0].lng!
+                    self.zoomToRegion(lat: self.stops[Int(round(Double(self.stops.count/2)))].lat!,lng:self.stops[0].lng!
                     )
                     var annotations:Array = [Station]()
                     for item in self.stops {
